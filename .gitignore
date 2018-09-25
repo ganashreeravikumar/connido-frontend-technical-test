@@ -90,3 +90,6 @@ shellAppWorkspaces
 
 # Expo Client builds
 /client-builds
+
+# jest
+coverage

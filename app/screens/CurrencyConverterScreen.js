@@ -14,26 +14,35 @@ export class CurrencyConverterScreen extends Component {
     state = { convertedVal: 0 }
 
     componentDidMount() {
-        this.loadData();
+        // this.loadData();
+        this.loadMockData();
     }
 
-    loadData = async () => {
-        try {
-         const res = await fetchData('EUR', Currencies);
-         const response = await res.json();
+    loadMockData = () => {
+      let rates = {'GBP': 0.8960, 'INR': 85.67, 'USD': 1.2};
+      this.setState({ rates });
+      this.props.updateRates(rates);
+    }
 
-         if(response.success) {
-           this.setState({ rates: response.rates });
-           this.props.updateRates(response.rates);
-         } else {
-           const {type, code} = response.error;
-           throw Error(`code: ${code} - ${type}`)
-         }
-       } catch(error) {
-         Alert.alert('Error', error.message)   
-         console.log('Error:', error);
-       }
-     }
+    // Commented as API limit is reached.
+
+    // loadData = async () => {
+    //     try {
+    //      const res = await fetchData('EUR', Currencies);
+    //      const response = await res.json();
+
+    //      if(response.success) {
+    //        this.setState({ rates: response.rates });
+    //        this.props.updateRates(response.rates);
+    //      } else {
+    //        const {type, code} = response.error;
+    //        throw Error(`code: ${code} - ${type}`)
+    //      }
+    //    } catch(error) {
+    //      Alert.alert('Error', error.message)   
+    //      console.log('Error:', error);
+    //    }
+    //  }
      
      convert = (value) => {
         const { rates, selectedVal } = this.props;
@@ -49,7 +58,7 @@ export class CurrencyConverterScreen extends Component {
         return (
           <CurrencyConverter 
             rates={rates}
-            refreshRates={this.loadData}
+            refreshRates={this.loadMockData} // Use when API working: refreshRates={this.loadData}
             selectedVal={selectedVal}
             convertedVal={convertedVal}
             convert={value => this.convert(value)}

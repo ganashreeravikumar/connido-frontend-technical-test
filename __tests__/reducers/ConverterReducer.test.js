@@ -2,12 +2,12 @@ import ConverterReducer from '../../app/reducers/ConverterReducer';
 import { ActionTypes } from '../../app/actions/ConverterAction'; 
 
 const initialState = {
-    rates: [], 
+    rates: {}, 
     selectedVal: 'GBP'
 };
 
 const ratesPayload = {
-    payload: { rates: [{'GBP': 0.8960}, {'INR': 85.67}]},
+    payload: { rates: {'GBP': 0.8960, 'INR': 85.67} },
     type: ActionTypes.UPDATE_RATES,
 };
 
@@ -28,17 +28,17 @@ describe('Converter Reducer', () => {
     it('should update rates', () => {
 
         expect(ConverterReducer(initialState, ratesPayload)).toEqual({
-            rates: [{'GBP': 0.8960}, {'INR': 85.67}], 
+            rates: {'GBP': 0.8960, 'INR': 85.67}, 
             selectedVal: 'GBP'
         });
 
         expect(ConverterReducer(undefined, ratesPayload)).toEqual({
-            rates: [{'GBP': 0.8960}, {'INR': 85.67}], 
+            rates: {'GBP': 0.8960,'INR': 85.67}, 
             selectedVal: 'GBP'
         });
 
         expect(ConverterReducer(null, ratesPayload)).toEqual({
-            rates: [{'GBP': 0.8960}, {'INR': 85.67}],  
+            rates: {'GBP': 0.8960, 'INR': 85.67},  
         });
 
     });
@@ -46,12 +46,12 @@ describe('Converter Reducer', () => {
     it('should update selected currency', () => {
 
         expect(ConverterReducer(initialState, selectedValPayload)).toEqual({
-            rates: [], 
+            rates: {},
             selectedVal: 'INR'
         });
 
         expect(ConverterReducer(undefined, selectedValPayload)).toEqual({
-            rates: [], 
+            rates: {},
             selectedVal: 'INR'
         });
 

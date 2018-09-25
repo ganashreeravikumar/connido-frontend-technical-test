@@ -1,7 +1,7 @@
 import { ActionTypes } from '../actions/ConverterAction';
 
 const initialState = {
-    rates: [], 
+    rates: {}, 
     selectedVal: 'GBP'
 }
 
