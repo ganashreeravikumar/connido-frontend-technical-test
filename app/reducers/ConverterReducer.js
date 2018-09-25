@@ -5,8 +5,8 @@ const initialState = {
     selectedVal: 'GBP'
 }
 
-export default ConverterReducer = (state = initialState, action) => {
-    switch(action.type) {
+const ConverterReducer = (state = initialState, action) => {
+    switch (action.type) {
 
         case ActionTypes.UPDATE_RATES: 
             const { rates } = action.payload;
@@ -20,8 +20,10 @@ export default ConverterReducer = (state = initialState, action) => {
             return {
                 ...state,
                 selectedVal: selectedVal
-            }    
+            }  
 
         default: return state;
     }
 }
+
+export default ConverterReducer
