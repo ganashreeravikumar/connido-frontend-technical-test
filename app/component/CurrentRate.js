@@ -20,8 +20,8 @@ export default class CurrentRate extends React.Component {
                     transparent
                     onPress={refreshRates}
                 >
-                    <Text style={styles.refreshText}>Refresh Rates</Text> */}
-                    <Ionicons name='ios-refresh' size={20} color={'blue'}/>
+                    <Text style={styles.refreshText}>Refresh Rates</Text>
+                    <Ionicons name='ios-refresh' size={20} color={'blue'} />
                 </Button>
             </View>
         </View>

@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
 
 const initialState = {};
 
-const middleware = [thunk]
+const middleware = [thunk];
 
 export default store = createStore(
     rootReducer, 

@@ -1,21 +1,22 @@
 import React, {Component} from 'react';
-import { Text, View, TextInput, TouchableOpacity, Picker, Alert } from 'react-native';
 
 import { connect } from 'react-redux';
 
 import fetchData from '../apis/FixerApi';
 import Currencies from '../config/Currencies';
 import CurrencyConverter from '../component/CurrencyConverter';
-import { updateRates, updateSelectedCurrency } from '../actions/ConverterAction'
-
+import { updateRates } from '../actions/ConverterAction';
 
 export class CurrencyConverterScreen extends Component {
 
-    state = { convertedVal: 0 }
+    componentWillMount() {
+      // Use when API working: this.loadData();
+      this.loadMockData();
+    }
 
     componentDidMount() {
-        // this.loadData();
-        this.loadMockData();
+        // Use when API working: setInterval(this.loadData, 30000);
+        setInterval(this.loadMockData, 30000);
     }
 
     loadMockData = () => {
@@ -32,8 +33,9 @@ export class CurrencyConverterScreen extends Component {
     //      const response = await res.json();
 
     //      if(response.success) {
-    //        this.setState({ rates: response.rates });
-    //        this.props.updateRates(response.rates);
+    //        const { rates } = response;
+    //        this.setState({ rates: rates });
+    //        this.props.updateRates(rates);
     //      } else {
     //        const {type, code} = response.error;
     //        throw Error(`code: ${code} - ${type}`)
@@ -43,35 +45,16 @@ export class CurrencyConverterScreen extends Component {
     //      console.log('Error:', error);
     //    }
     //  }
-     
-     convert = (value) => {
-        const { rates, selectedVal } = this.props;
-        console.log(value, rates, Number(value) * rates[selectedVal], selectedVal)
-        this.setState({ convertedVal: Number(value) * rates[selectedVal]});
-    }
-
 
     render() {
-        const { convertedVal } = this.state;
-        const {rates, selectedVal} = this.props;
-
         return (
           <CurrencyConverter 
-            rates={rates}
             refreshRates={this.loadMockData} // Use when API working: refreshRates={this.loadData}
-            selectedVal={selectedVal}
-            convertedVal={convertedVal}
-            convert={value => this.convert(value)}
-            updateSelectedCurrency={(selectedVal) => this.props.updateSelectedCurrency(selectedVal)}
           />
         );
       }
-
 }
 
-const mapStateToProps = state => ({
-    rates: state.currencyRates.rates,
-    selectedVal: state.currencyRates.selectedVal
-});
-
-export default connect( mapStateToProps, {updateRates, updateSelectedCurrency})(CurrencyConverterScreen);
+export default connect( null, {
+  updateRates,
+})(CurrencyConverterScreen);

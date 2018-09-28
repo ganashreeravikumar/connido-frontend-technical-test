@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { View } from 'react-native';
 
-import { Text, Button, ActionSheet } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
+import { Text, Button, ActionSheet } from 'native-base';
 
 import styles from '../screens/Styles';
 import Currencies from '../config/Currencies';
@@ -10,7 +10,7 @@ import Currencies from '../config/Currencies';
 export default class ConvertedResult extends React.Component {
   
   render() {
-    const { selectedVal, updateSelectedCurrency, convert, convertedVal, value } = this.props;
+    const { selectedVal, updateSelectedCurrency, convertedVal } = this.props;
     const Options = [ ...Currencies, 'Cancel']
 
     return (
@@ -33,7 +33,6 @@ export default class ConvertedResult extends React.Component {
                 buttonIndex => {
                     if(buttonIndex !== Options.length - 1) {
                         updateSelectedCurrency(Options[buttonIndex]);
-                        convert(value);
                     }
                 }
                 )}
@@ -43,6 +42,6 @@ export default class ConvertedResult extends React.Component {
             </Button>
           </View>
         </View>
-    )
+    );
   }
 }
