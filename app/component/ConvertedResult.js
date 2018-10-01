@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { View } from 'react-native';
 
+import PropTypes from 'prop-types';
+
 import { Ionicons } from '@expo/vector-icons';
 import { Text, Button, ActionSheet } from 'native-base';
 
@@ -9,6 +11,12 @@ import Currencies from '../config/Currencies';
 
 export default class ConvertedResult extends React.Component {
   
+  static propTypes = {
+    selectedVal: PropTypes.string.isRequired,
+    updateSelectedCurrency: PropTypes.func.isRequired,
+    convertedVal: PropTypes.number.isRequired
+  };
+
   render() {
     const { selectedVal, updateSelectedCurrency, convertedVal } = this.props;
     const Options = [ ...Currencies, 'Cancel']

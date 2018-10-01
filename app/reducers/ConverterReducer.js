@@ -1,3 +1,5 @@
+//@flow
+
 import { ActionTypes } from '../actions/ConverterAction';
 
 const initialState = {
@@ -7,12 +9,12 @@ const initialState = {
     selectedVal: 'GBP'
 };
 
-convert = (inputNum, selectedVal, rates) => {
+const convert = (inputNum: Number, selectedVal: string, rates: Object) => {
      if(!inputNum || !rates[selectedVal]) return 0;
      return (Number(inputNum) * rates[selectedVal]);
 };
 
-const ConverterReducer = (state = initialState, action) => {
+const ConverterReducer = (state: Object = initialState, action: Object) => {
     switch (action.type) {
 
         case ActionTypes.UPDATE_RATES: 

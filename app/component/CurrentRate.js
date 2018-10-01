@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { View } from 'react-native';
 
+import PropTypes from 'prop-types';
+
 import { Text, Button } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -8,6 +10,12 @@ import styles from '../screens/Styles';
 
 export default class CurrentRate extends React.Component {
   
+  static propTypes = {
+    rates: PropTypes.object.isRequired, 
+    selectedVal: PropTypes.string.isRequired,
+    refreshRates: PropTypes.func.isRequired
+  };
+
   render() {
     const {rates, selectedVal, refreshRates} = this.props;
     return (

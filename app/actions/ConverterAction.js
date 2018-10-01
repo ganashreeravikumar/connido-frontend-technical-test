@@ -1,3 +1,4 @@
+//@flow
 
 const ActionTypes = {
     UPDATE_RATES: 'UPDATE_RATES',
@@ -5,17 +6,17 @@ const ActionTypes = {
     UPDATE_SELECTED_CURRENCY: 'UPDATE_SELECTED_CURRENCY'
 };
 
-const updateRates = rates =>  ({ 
+const updateRates = (rates: Object)  =>  ({ 
     type: ActionTypes.UPDATE_RATES, 
     payload: {rates: rates} 
 });
 
-const updateInputNumber = input =>  ({ 
+const updateInputNumber = (input: Number) =>  ({ 
     type: ActionTypes.UPDATE_INPUT_NUM, 
     payload: { num: input } 
 });
 
-const updateSelectedCurrency = selectedVal => ({ 
+const updateSelectedCurrency = (selectedVal: string) => ({ 
     type: ActionTypes.UPDATE_SELECTED_CURRENCY,
     payload: { selectedVal } 
 });

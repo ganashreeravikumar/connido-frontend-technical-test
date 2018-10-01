@@ -3,6 +3,8 @@ import { View, TextInput, Text } from 'react-native';
 
 import { connect } from 'react-redux';
 
+import PropTypes from 'prop-types';
+
 import styles from '../screens/Styles';
 import CurrentRate from './CurrentRate';
 import ConvertedResult from './ConvertedResult';
@@ -11,6 +13,15 @@ import { updateInputNumber, updateSelectedCurrency } from '../actions/ConverterA
 
 class CurrencyConverter extends React.Component {
     
+  static propTypes = {
+    rates: PropTypes.object.isRequired, 
+    selectedVal: PropTypes.string.isRequired,
+    convertedVal: PropTypes.number.isRequired,
+    refreshRates: PropTypes.func.isRequired,
+    updateInputNumber: PropTypes.func.isRequired,
+    updateSelectedCurrency: PropTypes.func.isRequired
+  };
+  
   state = { value: '0' };
   
   render() {
