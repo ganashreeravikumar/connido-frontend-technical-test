@@ -20,4 +20,9 @@ const updateSelectedCurrency = selectedVal => ({
     payload: { selectedVal } 
 });
 
-export { ActionTypes, updateRates, updateSelectedCurrency, updateInputNumber };
+export { 
+    ActionTypes, 
+    updateRates, 
+    updateSelectedCurrency, 
+    updateInputNumber 
+};

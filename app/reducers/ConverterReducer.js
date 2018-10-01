@@ -8,6 +8,7 @@ const initialState = {
 };
 
 convert = (inputNum, selectedVal, rates) => {
+     if(!inputNum || !rates[selectedVal]) return 0;
      return (Number(inputNum) * rates[selectedVal]);
 };
 
